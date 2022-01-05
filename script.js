@@ -44,7 +44,7 @@ function game() {
             console.log(`Round ${i} is a draw.`)
         }
     }
-
+    //Determening a winner
     if (playerScore > computerScore) {
         console.log(`Players WON! Score is:\nPlayer: ${playerScore}\nComputer: ${computerScore}`);
     } else if (playerScore < computerScore) {
@@ -53,5 +53,13 @@ function game() {
         console.log("It's a DRAW!");
     }
 }
+const buttons = document.querySelectorAll('button');
+//loops through all button nodes in selector
+buttons.forEach((button) => {
+  //adds event listener to each button and console logs its id
+  button.addEventListener('click', () => {
+    console.log(button.id);
+  });
+});
 
 game();
