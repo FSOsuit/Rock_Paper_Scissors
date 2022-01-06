@@ -58,8 +58,7 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   //adds event listener to each button and console logs its id
   button.addEventListener('click', () => {
-    console.log(button.id);
+    console.log(playRound(button.id, computerPlay()));
   });
 });
 
-game();
