@@ -1,9 +1,27 @@
+//generates computer move
 function computerPlay() {
     const compOptions = ["rock", "paper", "scissors"];
     let randomNum = Math.floor(Math.random() * compOptions.length);
+    showComputerMove(compOptions[randomNum]);
     return compOptions[randomNum];
 }
 
+//showing computer Move
+function showComputerMove(compMove) {
+  const container = document.querySelector('.computerChoices');
+  const compSel = container.querySelectorAll('button');
+  compSel.forEach((element) => {
+    if (element.textContent.toLowerCase() === compMove) {
+      element.style.backgroundColor = 'blue'; //shows chosen option
+    }
+    else {
+      return;
+    }
+  })
+
+}
+
+//function that playes round of rps
 function playRound(playerSelection, computerSelection) {
     let playerWins = parseInt(document.getElementById('playerScore').textContent);
     let computerWins = parseInt(document.getElementById('computerScore').textContent);
@@ -57,7 +75,11 @@ function game() {
         console.log("It's a DRAW!");
     }
 }
-const buttons = document.querySelectorAll('button');
+
+
+//Player options event catcher
+const playerButtons = document.querySelector('.buttons')
+const buttons = playerButtons.querySelectorAll('button');
 //loops through all button nodes in selector
 buttons.forEach((button) => {
   //adds event listener to each button, returns playRound function value
@@ -66,15 +88,3 @@ buttons.forEach((button) => {
   });
 });
 
-/*
-let rock = document.getElementById('playerScore').textContent;
-console.log(rock);
-
-rock++;
-
-document.getElementById('playerScore').textContent = rock;
-rock++;
-
-document.getElementById('playerScore').textContent = rock;
-console.log(rock);
-*/
