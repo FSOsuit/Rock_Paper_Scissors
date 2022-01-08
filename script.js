@@ -5,24 +5,28 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let playerMove = playerSelection.toLowerCase();
-    let playerWins = 0;
-    let computerWins = 0;
-
-    if (playerMove === "rock" && computerSelection === "scissors") {
-        return playerWins = 1;
-    }else if (playerMove === "scissors" && computerSelection === "paper") {
-        return playerWins = 1;
-    } else if (playerMove === "paper" && computerSelection === "rock") {
-        return playerWins = 1;
-    } else if (playerMove === "rock" && computerSelection === "paper") {
-        return computerWins = 2;
-    } else if (playerMove === "scissors" && computerSelection === "rock") {
-        return computerWins = 2;
-    } else if (playerMove === "paper" && computerSelection === "scissors") {
-        return computerWins = 2;
+    let playerWins = parseInt(document.getElementById('playerScore').textContent);
+    let computerWins = parseInt(document.getElementById('computerScore').textContent);
+    if (playerSelection === "rock" && computerSelection === "scissors") {
+        playerWins++;
+        document.getElementById('playerScore').textContent = playerWins;
+    }else if (playerSelection === "scissors" && computerSelection === "paper") {
+        playerWins++;
+        document.getElementById('playerScore').textContent = playerWins;
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        playerWins++;
+        document.getElementById('playerScore').textContent = playerWins;
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
+        computerWins++;
+        document.getElementById('computerScore').textContent = computerWins;
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        computerWins++;
+        document.getElementById('computerScore').textContent = computerWins;
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        computerWins++;
+        document.getElementById('computerScore').textContent = computerWins;
     } else {
-        return 0;
+        return playerWins, computerWins;
     }
 }
 
@@ -56,9 +60,21 @@ function game() {
 const buttons = document.querySelectorAll('button');
 //loops through all button nodes in selector
 buttons.forEach((button) => {
-  //adds event listener to each button and console logs its id
+  //adds event listener to each button, returns playRound function value
   button.addEventListener('click', () => {
-    console.log(playRound(button.id, computerPlay()));
+    playRound(button.id, computerPlay());
   });
 });
 
+/*
+let rock = document.getElementById('playerScore').textContent;
+console.log(rock);
+
+rock++;
+
+document.getElementById('playerScore').textContent = rock;
+rock++;
+
+document.getElementById('playerScore').textContent = rock;
+console.log(rock);
+*/
