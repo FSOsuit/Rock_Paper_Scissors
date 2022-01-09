@@ -26,29 +26,37 @@ function showComputerMove(compMove) {
 function playRound(playerSelection, computerSelection) {
     let playerWins = parseInt(document.getElementById('playerScore').textContent);
     let computerWins = parseInt(document.getElementById('computerScore').textContent);
-    if (playerSelection === "rock" && computerSelection === "scissors") {
-        playerWins++;
-        document.getElementById('playerScore').textContent = playerWins;
-    }else if (playerSelection === "scissors" && computerSelection === "paper") {
-        playerWins++;
-        document.getElementById('playerScore').textContent = playerWins;
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-        playerWins++;
-        document.getElementById('playerScore').textContent = playerWins;
-    } else if (playerSelection === "rock" && computerSelection === "paper") {
-        computerWins++;
-        document.getElementById('computerScore').textContent = computerWins;
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        computerWins++;
-        document.getElementById('computerScore').textContent = computerWins;
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        computerWins++;
-        document.getElementById('computerScore').textContent = computerWins;
-    } else {
-        return playerWins, computerWins;
+    if (playerWins <= 3 && computerWins <= 3) { //why it works ? :D
+      if (playerSelection === "rock" && computerSelection === "scissors") {
+          playerWins++;
+          document.getElementById('playerScore').textContent = playerWins;
+      }else if (playerSelection === "scissors" && computerSelection === "paper") {
+          playerWins++;
+          document.getElementById('playerScore').textContent = playerWins;
+      } else if (playerSelection === "paper" && computerSelection === "rock") {
+          playerWins++;
+          document.getElementById('playerScore').textContent = playerWins;
+      } else if (playerSelection === "rock" && computerSelection === "paper") {
+          computerWins++;
+          document.getElementById('computerScore').textContent = computerWins;
+      } else if (playerSelection === "scissors" && computerSelection === "rock") {
+          computerWins++;
+          document.getElementById('computerScore').textContent = computerWins;
+      } else if (playerSelection === "paper" && computerSelection === "scissors") {
+          computerWins++;
+          document.getElementById('computerScore').textContent = computerWins;
+      } else {
+          return playerWins, computerWins;
+      }
+    } else if (playerWins > computerWins) {
+        winner();
+    } else if (playerWins < computerWins) {
+        loser();
     }
 }
 
+
+/*
 function game() {
     alert("Welcome to the game of rock, paper, scissors!")
     let rounds = prompt("Enter number of rounds you want to play: "); 
@@ -76,7 +84,7 @@ function game() {
         console.log("It's a DRAW!");
     }
 }
-
+*/
 
 //Player options event catcher
 const playerButtons = document.querySelector('.buttons')
@@ -89,3 +97,34 @@ buttons.forEach((button) => {
   });
 });
 
+
+function winner() {
+  const gameScreen = document.querySelector('.gameScreen');
+  gameScreen.style.display = 'none';
+
+  const container = document.querySelector('body');
+  const endScreen = document.createElement('div');
+  endScreen.style.backgroundColor = 'red';
+  endScreen.textContent = "Winner";
+  container.appendChild(endScreen);
+}
+function loser() {
+  const gameScreen = document.querySelector('.gameScreen');
+  gameScreen.style.display = 'none';
+
+  const container = document.querySelector('body');
+  const endScreen = document.createElement('div');
+  endScreen.style.backgroundColor = 'grey';
+  endScreen.textContent = "Loser";
+  container.appendChild(endScreen);
+}
+/*
+const gameScreen = document.querySelector('.gameScreen');
+gameScreen.style.display = "none";
+
+const container = document.querySelector('html');
+const endScreen = document.createElement('div');
+endScreen.style.backgroundColor = 'red';
+endScreen.textContent = "Winner";
+container.appendChild(endScreen);
+*/
