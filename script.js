@@ -11,8 +11,9 @@ function showComputerMove(compMove) {
   const container = document.querySelector('.computerChoices');
   const compSel = container.querySelectorAll('button');
   compSel.forEach((element) => {
+    element.classList.remove('chosen');
     if (element.textContent.toLowerCase() === compMove) {
-      element.style.backgroundColor = 'blue'; //shows chosen option
+      element.classList.add('chosen'); //shows chosen option
     }
     else {
       return;
