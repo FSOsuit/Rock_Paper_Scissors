@@ -9,10 +9,10 @@ function computerPlay() {
 //showing computer Move
 function showComputerMove(compMove) {
   const container = document.querySelector('.computerChoices');
-  const compSel = container.querySelectorAll('button');
+  const compSel = container.querySelectorAll('img');
   compSel.forEach((element) => {
     element.classList.remove('chosen');
-    if (element.textContent.toLowerCase() === compMove) {
+    if (element.id === compMove) { 
       element.classList.add('chosen'); //shows chosen option
     }
     else {
@@ -56,39 +56,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-/*
-function game() {
-    alert("Welcome to the game of rock, paper, scissors!")
-    let rounds = prompt("Enter number of rounds you want to play: "); 
-    let playerScore = 0;
-    let computerScore = 0;
-    for (i = 1; i <= rounds; i++) {
-        const playerSelection = prompt("Pick rock, paper or scissors: ");
-        let roundWinner = playRound(playerSelection, computerPlay())
-        if (roundWinner === 1) {
-            console.log(`Round ${i} is won by Player.`);
-            playerScore++;
-        } else if (roundWinner === 2) {
-            console.log(`Round ${i} is won by Computer.`);
-            computerScore++;
-        } else {
-            console.log(`Round ${i} is a draw.`)
-        }
-    }
-    //Determening a winner
-    if (playerScore > computerScore) {
-        console.log(`Players WON! Score is:\nPlayer: ${playerScore}\nComputer: ${computerScore}`);
-    } else if (playerScore < computerScore) {
-        console.log(`Computer WON! Score is:\nPlayer: ${playerScore}\nComputer: ${computerScore}`);
-    } else {
-        console.log("It's a DRAW!");
-    }
-}
-*/
-
 //Player options event catcher
-const playerButtons = document.querySelector('.buttons')
-const buttons = playerButtons.querySelectorAll('button');
+const playerButtons = document.querySelector('.playerChoices')
+const buttons = playerButtons.querySelectorAll('img');
 //loops through all button nodes in selector
 buttons.forEach((button) => {
   //adds event listener to each button, returns playRound function value
@@ -118,13 +88,3 @@ function loser() {
   endScreen.textContent = "Loser";
   container.appendChild(endScreen);
 }
-/*
-const gameScreen = document.querySelector('.gameScreen');
-gameScreen.style.display = "none";
-
-const container = document.querySelector('html');
-const endScreen = document.createElement('div');
-endScreen.style.backgroundColor = 'red';
-endScreen.textContent = "Winner";
-container.appendChild(endScreen);
-*/
