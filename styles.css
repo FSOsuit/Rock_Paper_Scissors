@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+/*layout*/
 .gameScreen {
   height: 600px;
   width: 600px;
@@ -45,4 +45,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+img:hover {
+  transform: scale(1.5);
 }
