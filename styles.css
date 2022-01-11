@@ -9,6 +9,40 @@ html {
 }
 
 img {
-  height: 100px;
-  width: 100px;
+  height: 130px;
+  width: 130px;
+}
+
+/*centering play screen*/
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameScreen {
+  height: 600px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playerChoices, .computerChoices {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.score {
+  font-size: 80px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
