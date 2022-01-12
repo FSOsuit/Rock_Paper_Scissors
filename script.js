@@ -55,9 +55,17 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+const playButton = document.querySelector('.playButton');
+const playGame = document.querySelector('.gameScreen');
+playButton.addEventListener('click', () => {
+  playGame.classList.remove('hideGame');
+  playButton.classList.add('hideGame');
+});
+
+
 
 //Player options event catcher
-const playerButtons = document.querySelector('.playerChoices')
+const playerButtons = document.querySelector('.playerChoices');
 const buttons = playerButtons.querySelectorAll('img');
 //loops through all button nodes in selector
 buttons.forEach((button) => {
