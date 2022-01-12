@@ -48,7 +48,7 @@ body {
   align-items: center;
 }
 
-img:hover {
+.bigger:hover {
   transform: scale(1.5);
 }
 
