@@ -108,7 +108,9 @@ function loser() {
 //function to remove title at the end
 function rmTitle () {
   const title = document.querySelector('.title');
+  const condition = document.getElementById('condition');
   title.classList.add('hideGame');
+  condition.classList.add('hideGame');
 }
 
 //adding  play again button
