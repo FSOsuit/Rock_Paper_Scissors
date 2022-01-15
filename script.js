@@ -26,7 +26,7 @@ function showComputerMove(compMove) {
 function playRound(playerSelection, computerSelection) {
     let playerWins = parseInt(document.getElementById('playerScore').textContent);
     let computerWins = parseInt(document.getElementById('computerScore').textContent);
-    if (playerWins <= 3 && computerWins <= 3) { //why it works ? :D
+    if (playerWins <= 3 && computerWins <= 3) { 
       if (playerSelection === "rock" && computerSelection === "scissors") {
           playerWins++;
           document.getElementById('playerScore').textContent = playerWins;
@@ -49,12 +49,18 @@ function playRound(playerSelection, computerSelection) {
           return playerWins, computerWins;
       }
     } else if (playerWins > computerWins) {
-        winner();
+      winner();
+      rmTitle();
+      addPlayAgainBtn();
+
     } else if (playerWins < computerWins) {
-        loser();
+      loser();
+      rmTitle();
+      addPlayAgainBtn();
     }
 }
 
+//starting the game
 const playButton = document.querySelector('.playButton');
 const playGame = document.querySelector('.gameScreen');
 playButton.addEventListener('click', () => {
@@ -75,24 +81,46 @@ buttons.forEach((button) => {
   });
 });
 
-
+//function for displaying winner msg
 function winner() {
   const gameScreen = document.querySelector('.gameScreen');
-  gameScreen.style.display = 'none';
+  gameScreen.classList.add('hideGame');
 
   const container = document.querySelector('body');
   const endScreen = document.createElement('div');
-  endScreen.style.backgroundColor = 'red';
   endScreen.textContent = "Winner";
+  endScreen.classList.add('title');
   container.appendChild(endScreen);
 }
+
+//displaying loser msg
 function loser() {
   const gameScreen = document.querySelector('.gameScreen');
-  gameScreen.style.display = 'none';
+  gameScreen.classList.add('hideGame');
 
   const container = document.querySelector('body');
   const endScreen = document.createElement('div');
-  endScreen.style.backgroundColor = 'grey';
   endScreen.textContent = "Loser";
+  endScreen.classList.add('title');
   container.appendChild(endScreen);
 }
+
+//function to remove title at the end
+function rmTitle () {
+  const title = document.querySelector('.title');
+  title.classList.add('hideGame');
+}
+
+//adding  play again button
+function addPlayAgainBtn () {
+  const playAgainContainer = document.querySelector('body');
+  const playAgain = document.createElement('button');
+  playAgain.classList.add('playButton')
+  playAgain.textContent = "play again!"
+  playAgainContainer.appendChild(playAgain);
+  playAgain.addEventListener('click', () => {
+    location.reload();
+  });
+}
+
+
